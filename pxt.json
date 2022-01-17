@@ -1,5 +1,6 @@
 {
     "name": "spinning dial",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
