@@ -1,3 +1,5 @@
+let dial24_list: number[] = []
+let dial24_is = 0
 function dial24_finish () {
     dial24_list = []
     if (dial24_is != -1) {
@@ -50,11 +52,19 @@ function dial_flip (xyxy: number) {
 function dial24_flip_xy (xy: number) {
     led.toggle(Math.idiv(xy, 10), xy % 10)
 }
-let dial24_is = 0
-let dial24_list: number[] = []
-dial24_init()
-for (let index = 0; index <= 99; index++) {
-    dial24_point(index)
-    basic.pause(100)
-}
-dial24_finish()
+basic.forever(function () {
+    dial24_init()
+    for (let index = 0; index <= 96; index++) {
+        dial24_point(index)
+        basic.pause(100)
+    }
+    dial24_finish()
+    basic.pause(1000)
+    dial24_init()
+    for (let index = 0; index <= 96; index++) {
+        dial24_point(96 - index)
+        basic.pause(100)
+    }
+    dial24_finish()
+    basic.pause(1000)
+})
